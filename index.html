@@ -2,21 +2,70 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <title>💬 คำคมสร้างแรงบันดาลใจ</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌿 คำคมสร้างแรงบันดาลใจ</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;500&display=swap">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Prompt', sans-serif;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #1e1e1e;
+      color: #fff;
+    }
+    .container {
+      text-align: center;
+      padding: 2rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 500;
+    }
+    p {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+    }
+    button {
+      background: #4caf50;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #45a049;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>☀️ คำคมประจำวัน</h1>
-    <p id="quote">คลิกปุ่มด้านล่างเพื่อรับแรงบันดาลใจใหม่ๆ</p>
+    <h1>💭 คำคมประจำวัน</h1>
+    <p id="quote">กดปุ่มเพื่อรับแรงบันดาลใจ</p>
     <button onclick="getQuote()">✨ รับคำคม</button>
   </div>
 
   <script>
     async function getQuote() {
-      const res = await fetch('/.netlify/functions/quote');
-      const data = await res.json();
-      document.getElementById('quote').textContent = `“${data.quote}”`;
+      try {
+        const res = await fetch('/.netlify/functions/quote');
+        const data = await res.json();
+        document.getElementById('quote').textContent = `“${data.quote}”`;
+      } catch (error) {
+        document.getElementById('quote').textContent = "❌ ไม่สามารถโหลดคำคมได้";
+      }
     }
   </script>
 </body>
