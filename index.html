@@ -1,72 +1,60 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🌿 คำคมสร้างแรงบันดาลใจ</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;500&display=swap">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Prompt', sans-serif;
-    }
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: #1e1e1e;
-      color: #fff;
-    }
-    .container {
-      text-align: center;
-      padding: 2rem;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-    h1 {
-      font-size: 1.8rem;
-      font-weight: 500;
-    }
-    p {
-      font-size: 1.2rem;
-      margin: 1rem 0;
-    }
-    button {
-      background: #4caf50;
-      color: white;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    button:hover {
-      background: #45a049;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily R&B Song Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #222;
+            color: white;
+            padding: 20px;
+        }
+        .song-card {
+            background: #333;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+        }
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .play-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #ff6600;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>💭 คำคมประจำวัน</h1>
-    <p id="quote">กดปุ่มเพื่อรับแรงบันดาลใจ</p>
-    <button onclick="getQuote()">✨ รับคำคม</button>
-  </div>
+    <h1>Today's R&B Song Recommendation</h1>
+    <div class="song-card">
+        <img src="img/best-part-e1573531028449.jpg" alt="Song" id="song-image">
+        <h2 id="song-title">Song Title</h2>
+        <p id="song-artist">Artist Name</p>
+        <a href="#" class="play-button" id="song-link" target="_blank">Listen Now</a>
+    </div>
+    <script>
+        const songData = {
+            title: "Best Part",
+            artist: "Daniel Caesar ft. H.E.R.",
+            image: "img/best-part-e1573531028449.jpg",
+            link: "https://www.youtube.com/watch?v=vBy7FaapGRo"
+        };
 
-  <script>
-    async function getQuote() {
-      try {
-        const res = await fetch('/.netlify/functions/quote');
-        const data = await res.json();
-        document.getElementById('quote').textContent = `“${data.quote}”`;
-      } catch (error) {
-        document.getElementById('quote').textContent = "❌ ไม่สามารถโหลดคำคมได้";
-      }
-    }
-  </script>
+        document.getElementById("song-title").textContent = songData.title;
+        document.getElementById("song-artist").textContent = songData.artist;
+        document.getElementById("song-image").src = songData.image;
+        document.getElementById("song-link").href = songData.link;
+    </script>
 </body>
 </html>
